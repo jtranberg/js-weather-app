@@ -41,7 +41,7 @@ function App() {
         minHeight: '100vh',
       }}
     >
-      <h1 className="text-center">My Weather App</h1>
+      <h1 className="text-center">Be Brave To Breath</h1>
       <WeatherForm 
         setWeatherData={setWeatherData} 
         setForecastData={setForecastData} 
