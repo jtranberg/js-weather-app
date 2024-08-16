@@ -1,32 +1,37 @@
-body{
-  
+body {
   width: 100%;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-
-
 .container {
-  
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start; /* Align content closer to the top */
+  align-items: center;
+  min-height: 100vh;
   width: 100vw;
-  height: 100vh;
   overflow: hidden;
   background-size: cover;
   background-position: center;
-  min-height: 100vh; /* Ensure it covers the full viewport */
   color: #fff;
+  padding-top: 20px; /* Optional: Add some space from the top */
 }
-h1
-{
+
+
+.weather-app-content {
+  text-align: center;
+  background: rgba(255, 255, 255, 0.082); /* Optional: Adds a subtle background */
+  padding: 20px;
+  border-radius: 10px;
+}
+
+h1 {
   color: #fff;
 }
 
-.btn
-{
-background: #3bb8f7;
-color: #333;
-}
-#forecast .btn
-{
-  background: #1b78eb;
-  color: #ced5f5;
+.btn {
+  background: #3bb8f7;
+  color: #333;
 }

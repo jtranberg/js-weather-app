@@ -36,35 +36,32 @@ function App() {
       className="container" 
       style={{
         backgroundImage: `url(${backgroundImage})`,
-        backgroundSize: 'cover',
-        backgroundPosition: 'center',
-        minHeight: '100vh',
       }}
     >
-      <h1 className="text-center">Be Brave To Breath</h1>
-      <WeatherForm 
-        setWeatherData={setWeatherData} 
-        setForecastData={setForecastData} 
-        addToHistory={addToHistory} 
-      />
-      <HistoryModal history={searchHistory} setWeatherData={setWeatherData} />{forecastData && (
-        <>
-          <button 
-            className="btn btn-primary my-3" 
-            onClick={toggleForecast}
-          >
-            {showForecast ? 'Hide Forecast' : 'Show Forecast'}
-          </button>
-          {showForecast && <ForecastDisplay data={forecastData} />}
-        </>
-      )}
-      {weatherData && <WeatherDisplay data={weatherData} />}
-      
-      
-
-      {weatherData && (
-        <CoDetails lat={weatherData.coord.lat} lon={weatherData.coord.lon} />
-      )}
+      <div className="weather-app-content">
+        <h1 className="text-center">Brave Enough To Breath</h1>
+        <WeatherForm 
+          setWeatherData={setWeatherData} 
+          setForecastData={setForecastData} 
+          addToHistory={addToHistory} 
+        />
+        <HistoryModal history={searchHistory} setWeatherData={setWeatherData} />
+        {forecastData && (
+          <>
+            <button 
+              className="btn btn-primary my-3" 
+              onClick={toggleForecast}
+            >
+              {showForecast ? 'Hide Forecast' : 'Show Forecast'}
+            </button>
+            {showForecast && <ForecastDisplay data={forecastData} />}
+          </>
+        )}
+        {weatherData && <WeatherDisplay data={weatherData} />}
+        {weatherData && (
+          <CoDetails id='codetails' lat={weatherData.coord.lat} lon={weatherData.coord.lon} />
+        )}
+      </div>
     </div>
   );
 }
