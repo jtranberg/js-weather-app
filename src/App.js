@@ -8,12 +8,12 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { getBackgroundForTime } from './components/background';
 import './App.css';
 
-
 function App() {
   const [weatherData, setWeatherData] = useState(null);
   const [forecastData, setForecastData] = useState(null);
   const [searchHistory, setSearchHistory] = useState([]);
   const [backgroundImage, setBackgroundImage] = useState(getBackgroundForTime());
+  const [showForecast, setShowForecast] = useState(false); // State for toggling forecast
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -25,6 +25,10 @@ function App() {
 
   const addToHistory = (location) => {
     setSearchHistory((prevHistory) => [location, ...prevHistory]);
+  };
+
+  const toggleForecast = () => {
+    setShowForecast(!showForecast);
   };
 
   return (
@@ -42,13 +46,25 @@ function App() {
         setWeatherData={setWeatherData} 
         setForecastData={setForecastData} 
         addToHistory={addToHistory} 
-      /><HistoryModal history={searchHistory} setWeatherData={setWeatherData} />
+      />
+      <HistoryModal history={searchHistory} setWeatherData={setWeatherData} />
       {weatherData && <WeatherDisplay data={weatherData} />}
-      {forecastData && <ForecastDisplay data={forecastData} />}
+      
+      {forecastData && (
+        <>
+          <button 
+            className="btn btn-primary my-3" 
+            onClick={toggleForecast}
+          >
+            {showForecast ? 'Hide Forecast' : 'Show Forecast'}
+          </button>
+          {showForecast && <ForecastDisplay data={forecastData} />}
+        </>
+      )}
+
       {weatherData && (
         <CoDetails lat={weatherData.coord.lat} lon={weatherData.coord.lon} />
       )}
-      
     </div>
   );
 }
