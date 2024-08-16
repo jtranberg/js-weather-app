@@ -1,0 +1,44 @@
+.App {
+  text-align: center;
+  
+}
+
+
+
+.App-header {
+  background-color: #a9bbde;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+
+
+.container {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background-size: cover;
+  background-position: center;
+  min-height: 100vh; /* Ensure it covers the full viewport */
+  color: #fff;
+}
+h1
+{
+  color: #fff;
+}
+
+.btn
+{
+background: #3bb8f7;
+color: #333;
+}
+#forecast .btn
+{
+  background: #1b78eb;
+  color: #ced5f5;
+}
