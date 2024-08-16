@@ -47,10 +47,7 @@ function App() {
         setForecastData={setForecastData} 
         addToHistory={addToHistory} 
       />
-      <HistoryModal history={searchHistory} setWeatherData={setWeatherData} />
-      {weatherData && <WeatherDisplay data={weatherData} />}
-      
-      {forecastData && (
+      <HistoryModal history={searchHistory} setWeatherData={setWeatherData} />{forecastData && (
         <>
           <button 
             className="btn btn-primary my-3" 
@@ -61,6 +58,9 @@ function App() {
           {showForecast && <ForecastDisplay data={forecastData} />}
         </>
       )}
+      {weatherData && <WeatherDisplay data={weatherData} />}
+      
+      
 
       {weatherData && (
         <CoDetails lat={weatherData.coord.lat} lon={weatherData.coord.lon} />
