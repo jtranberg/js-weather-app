@@ -15,14 +15,15 @@ body {
   overflow: hidden;
   background-size: cover;
   background-position: center;
-  color: #fff;
+  font-size: 1.5em;
+  color: #126cd4;
   padding-top: 20px; /* Optional: Add some space from the top */
 }
 
 
 .weather-app-content {
   text-align: center;
-  background: rgba(255, 255, 255, 0.082); /* Optional: Adds a subtle background */
+  background: rgba(159, 198, 243, 0.709); /* Optional: Adds a subtle background */
   padding: 20px;
   border-radius: 10px;
 }
