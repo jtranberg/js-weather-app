@@ -418,6 +418,12 @@ border-radius: 20px;
   font-weight: 700;
 }
 
+.weather-info img {
+  width: 80px;
+  height: 80px;
+  margin-top: 8px;
+}
+
 /* -----------------------------
    GENERIC CO2 SUPPORT
 ----------------------------- */

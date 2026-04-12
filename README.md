@@ -1,70 +1,149 @@
-# Getting Started with Create React App
+🌍 Be Brave To Breathe
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Real-time atmospheric intelligence platform combining weather data, air quality metrics, and global CO₂ insights into a single unified dashboard.
 
-## Available Scripts
+🧠 Overview
 
-In the project directory, you can run:
+Be Brave To Breathe is a full-stack system designed to transform raw environmental data into actionable insight.
 
-### `npm start`
+It integrates:
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+🌤️ Live weather conditions
+🌫️ Air quality & pollutant analysis
+🧪 Carbon monoxide (CO) levels
+🌎 Global CO₂ trends (NOAA data)
+🧭 Atmospheric interpretation & advisories
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+The goal is simple:
 
-### `npm test`
+Turn environmental data → insight → awareness → better decisions
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+🚀 Features
+🌤️ Weather Intelligence
+Real-time weather lookup by city & country
+Temperature, humidity, wind, and conditions
+Dynamic atmospheric summaries
+🌫️ Air Quality Panel
+AQI classification (Good → Hazard)
+Pollutant breakdown:
+PM2.5
+PM10
+NO₂, O₃, SO₂, CO
+Human-readable explanations
+🧪 CO Monitoring
+Carbon monoxide concentration analysis
+Health interpretation layers
+🌎 Global CO₂ Tracking
+Live NOAA Mauna Loa data
+Daily CO₂ change tracking
+Trend detection (rising / falling / stable)
+Cached backend API for performance
+🧭 Atmospheric Summary Engine
+Interprets conditions into:
+Stable
+Humid
+Windy
+Reduced Clarity
+Provides breathing advisories
+📊 Forecast View
+Time-based forecast breakdown
+Moment.js formatted timestamps
+🕘 Search History
+Modal-based history tracking
+Quick re-selection of past searches
+🧰 Tech Stack
+Frontend
+React (Create React App)
+React Bootstrap
+Testing Library
+Backend
+Node.js + Express
+NOAA CO₂ data ingestion (CSV parsing)
+Caching layer
+APIs
+OpenWeather API
+NOAA Global CO₂ dataset
+🧪 Testing
 
-### `npm run build`
+This project includes a full multi-layer testing strategy:
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+✅ Unit Tests
+Utility functions
+Data transformation logic
+✅ Component Tests
+UI rendering
+User interaction
+Conditional states
+✅ Integration Tests
+Full app flow:
+User input → API → UI update
+Multi-API mocking (axios + fetch)
+✅ Backend Tests
+Express API routes
+CSV parsing validation
+Cache behavior
+Error handling
+Test Suites: 11 passed
+Tests:       58 passed
+⚙️ Available Scripts
+npm start
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+Run the frontend in development mode
+👉 http://localhost:3000
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+npm test
 
-### `npm run eject`
+Run all frontend tests
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+🔧 Backend (CO₂ Server)
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Navigate to the server folder:
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+cd server
+npm install
+npm start
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+Runs on:
+👉 http://localhost:5000
 
-## Learn More
+Endpoint:
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+GET /api/global-co2
+🔑 Environment Variables
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+Create a .env file in the root:
 
-### Code Splitting
+REACT_APP_OPENWEATHER_API_KEY=your_api_key_here
+📸 Screenshot
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+Placed in:
 
-### Analyzing the Bundle Size
+public/screenshot.png
+🎯 System Design Philosophy
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+This project is built around:
 
-### Making a Progressive Web App
+data → processing → insight → action
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+Not just displaying data —
+but making it understandable and meaningful.
 
-### Advanced Configuration
+🧠 Author
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+Built by a full-stack systems engineer focused on:
 
-### Deployment
+End-to-end system design
+Real-world data handling
+Predictive & interpretive interfaces
+IoT, telemetry, and environmental systems
+🚀 Future Improvements
+Historical CO₂ visualization charts
+Alert thresholds for air quality
+Mobile optimization
+PWA support
+Real-time streaming updates
+🧨 Final Note
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+This is not just a weather app.
 
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+It’s an environmental intelligence system.

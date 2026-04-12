@@ -1,0 +1,44 @@
+# Node modules
+node_modules/
+
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Environment variables
+.env
+.env.local
+.env.development
+.env.test
+.env.production
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Coverage (Jest)
+coverage/
+
+# Build / output
+dist/
+build/
+
+# Cache
+.cache/
+.tmp/
+
+# Optional: lock files (uncomment if needed)
+# package-lock.json
+# yarn.lock
+
+# VS Code / IDE
+.vscode/
+.idea/
+
+# Misc
+*.pid
+*.seed
+*.pid.lock
