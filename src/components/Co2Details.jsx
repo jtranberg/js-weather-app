@@ -1,6 +1,9 @@
 import React, { useEffect, useMemo, useState } from 'react';
 import './css/Co2Details.css';
 
+ const API_BASE_URL =
+  process.env.REACT_APP_API_BASE_URL || 'http://localhost:5000';
+
 function getCO2Level(value) {
   if (value < 410) {
     return {
@@ -109,7 +112,9 @@ function Co2Details() {
         setLoading(true);
         setError('');
 
-        const res = await fetch('http://localhost:5000/api/global-co2');
+       
+
+const res = await fetch(`${API_BASE_URL}/api/global-co2`);
 
         if (!res.ok) {
           throw new Error(`Failed to load CO₂: ${res.status}`);
@@ -177,16 +182,18 @@ function Co2Details() {
           <h3 className="panel-title mb-0">Global CO₂</h3>
         </div>
 
-       <span className={`status-badge ${level.className}`}>
-  <span className="badge-icon">
-    {level.className === 'level-good' && '🟢'}
-    {level.className === 'level-fair' && '🔵'}
-    {level.className === 'level-moderate' && '🟡'}
-    {level.className === 'level-poor' && '🟠'}
-    {level.className === 'level-hazard' && '🔴'}
+      {level && (
+  <span className={`status-badge ${level.className}`}>
+    <span className="badge-icon">
+      {level.className === 'level-good' && '🟢'}
+      {level.className === 'level-fair' && '🔵'}
+      {level.className === 'level-moderate' && '🟡'}
+      {level.className === 'level-poor' && '🟠'}
+      {level.className === 'level-hazard' && '🔴'}
+    </span>
+    {level.label}
   </span>
-  {level.label}
-</span>
+)}
       </div>
 
       <div className="co2-value">
@@ -194,7 +201,7 @@ function Co2Details() {
       </div>
 
       <div className={`co2-trend ${trendDisplay.colorClass}`}>
-        {trendDisplay.icon} {trendDisplay.formattedChange} ppm
+        {trendDisplay.icon} {trendDisplay.formattedChange} ppm/day
         <span className="trend-label">
           {' '}({trend || trendDisplay.label})
         </span>

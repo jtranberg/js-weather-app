@@ -3,7 +3,7 @@ import fetch from 'node-fetch';
 import cors from 'cors';
 
 const app = express();
-const PORT = 5000;
+const PORT = process.env.PORT || 5000;
 
 app.use(cors());
 
@@ -34,6 +34,10 @@ function parseCSV(text) {
     .filter((line) => line && !line.startsWith('#'));
 }
 
+function formatDate(year, month, day) {
+  return `${year}-${String(month).padStart(2, '0')}-${String(day).padStart(2, '0')}`;
+}
+
 function extractCO2Data(lines) {
   if (lines.length < 2) {
     throw new Error('Not enough data in CSV');
@@ -49,11 +53,11 @@ function extractCO2Data(lines) {
   const co2 = parseFloat(latest[4]);
   const prevCO2 = parseFloat(previous[4]);
 
-  if (isNaN(co2)) {
+  if (Number.isNaN(co2)) {
     throw new Error('Invalid CO₂ value');
   }
 
-  const change = !isNaN(prevCO2) ? +(co2 - prevCO2).toFixed(3) : null;
+  const change = !Number.isNaN(prevCO2) ? +(co2 - prevCO2).toFixed(3) : null;
 
   return {
     co2,
@@ -62,19 +66,22 @@ function extractCO2Data(lines) {
   };
 }
 
-function formatDate(year, month, day) {
-  return `${year}-${String(month).padStart(2, '0')}-${String(day).padStart(2, '0')}`;
-}
-
 function isCacheValid() {
   return cache.data && Date.now() - cache.timestamp < CACHE_DURATION;
 }
 
 /* -----------------------------
-   ROUTE
+   ROUTES
 ----------------------------- */
 
-app.get('/api/global-co2', async (req, res) => {
+app.get('/', (_req, res) => {
+  res.json({
+    status: 'ok',
+    service: 'be-brave-to-breath-co2-api',
+  });
+});
+
+app.get('/api/global-co2', async (_req, res) => {
   try {
     if (isCacheValid()) {
       console.log('🟢 Serving CO₂ from cache');
@@ -105,7 +112,6 @@ app.get('/api/global-co2', async (req, res) => {
       source: 'NOAA Mauna Loa',
     };
 
-    // update cache
     cache = {
       data: result,
       timestamp: Date.now(),
@@ -113,11 +119,11 @@ app.get('/api/global-co2', async (req, res) => {
 
     console.log('✅ CO₂ updated:', result);
 
-    res.json(result);
+    return res.json(result);
   } catch (err) {
     console.error('❌ CO₂ API error:', err.message);
 
-    res.status(500).json({
+    return res.status(500).json({
       error: 'Failed to fetch CO₂ data',
       detail: err.message,
     });
@@ -129,5 +135,5 @@ app.get('/api/global-co2', async (req, res) => {
 ----------------------------- */
 
 app.listen(PORT, () => {
-  console.log(`🚀 CO2 server running on http://localhost:${PORT}`);
+  console.log(`🚀 CO2 server running on port ${PORT}`);
 });
