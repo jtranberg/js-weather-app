@@ -15,7 +15,7 @@ import './App.css';
 function App() {
   const [weatherData, setWeatherData] = useState(null);
   const [forecastData, setForecastData] = useState(null);
-  const [ setSearchHistory] = useState([]);
+  const [, setSearchHistory] = useState([]);
   const [backgroundImage, setBackgroundImage] = useState(getBackgroundForTime());
   const [showForecast, setShowForecast] = useState(false);
 
