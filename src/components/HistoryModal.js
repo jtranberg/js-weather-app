@@ -14,23 +14,31 @@ function HistoryModal({ history, setWeatherData }) {
 
   return (
     <>
-      <Button variant="info" onClick={handleShow}>
-        View History
-      </Button>
+      <div className="history-button-row">
+        <Button className="history-btn" variant="info" onClick={handleShow}>
+          View History
+        </Button>
+      </div>
 
-      <Modal show={show} onHide={handleClose}>
+      <Modal show={show} onHide={handleClose} centered>
         <Modal.Header closeButton>
           <Modal.Title>Search History</Modal.Title>
         </Modal.Header>
+
         <Modal.Body>
           <ListGroup>
             {history.map((location, index) => (
-              <ListGroup.Item key={index} onClick={() => selectHistoryItem(location)}>
+              <ListGroup.Item
+                key={index}
+                action
+                onClick={() => selectHistoryItem(location)}
+              >
                 {location}
               </ListGroup.Item>
             ))}
           </ListGroup>
         </Modal.Body>
+
         <Modal.Footer>
           <Button variant="secondary" onClick={handleClose}>
             Close

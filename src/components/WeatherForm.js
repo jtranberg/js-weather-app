@@ -1,31 +1,37 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 
+const API_KEY = process.env.REACT_APP_OPENWEATHER_API_KEY;
+
 function WeatherForm({ setWeatherData, setForecastData, addToHistory }) {
   const [location, setLocation] = useState('');
   const [countryCode, setCountryCode] = useState('');
-  const [unit, setUnit] = useState('metric'); // 'metric' for Celsius, 'imperial' for Fahrenheit
+  const [unit, setUnit] = useState('metric');
 
-  // Fetch weather data using coordinates
   const fetchWeatherDataByCoords = async (lat, lon) => {
     try {
-      const url = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&units=${unit}&appid=f7016d740da7c098b97c1e4f547188b7`;
+      const url = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&units=${unit}&appid=${API_KEY}`;
       const response = await axios.get(url);
+
       setWeatherData(response.data);
-      setLocation(response.data.name); // Set the location name based on response data
-      setCountryCode(response.data.sys.country); // Set the country code based on response data
+      setLocation(response.data.name);
+      setCountryCode(response.data.sys.country);
       addToHistory(`${response.data.name}, ${response.data.sys.country}`);
     } catch (error) {
       alert('Failed to fetch weather data.');
     }
   };
 
-  // Fetch weather data using location and country code
   const fetchWeatherDataByLocation = async () => {
-    if (!location || !countryCode) return alert('Please enter both location and country code.');
+    if (!location || !countryCode) {
+      alert('Please enter both location and country code.');
+      return;
+    }
+
     try {
-      const url = `https://api.openweathermap.org/data/2.5/weather?q=${location},${countryCode}&units=${unit}&appid=f7016d740da7c098b97c1e4f547188b7`;
+      const url = `https://api.openweathermap.org/data/2.5/weather?q=${location},${countryCode}&units=${unit}&appid=${API_KEY}`;
       const response = await axios.get(url);
+
       setWeatherData(response.data);
       addToHistory(`${response.data.name}, ${response.data.sys.country}`);
     } catch (error) {
@@ -34,10 +40,14 @@ function WeatherForm({ setWeatherData, setForecastData, addToHistory }) {
   };
 
   const fetchForecastData = async () => {
-    if (!location || !countryCode) return alert('Please enter both location and country code.');
+    if (!location || !countryCode) {
+      alert('Please enter both location and country code.');
+      return;
+    }
+
     try {
       const forecastResponse = await axios.get(
-        `https://api.openweathermap.org/data/2.5/forecast?q=${location},${countryCode}&units=${unit}&appid=f7016d740da7c098b97c1e4f547188b7`
+        `https://api.openweathermap.org/data/2.5/forecast?q=${location},${countryCode}&units=${unit}&appid=${API_KEY}`
       );
       setForecastData(forecastResponse.data);
     } catch (error) {
@@ -46,63 +56,73 @@ function WeatherForm({ setWeatherData, setForecastData, addToHistory }) {
   };
 
   const handleLocationError = (error) => {
-    switch(error.code) {
+    switch (error.code) {
       case error.PERMISSION_DENIED:
-        alert("User denied the request for Geolocation.");
+        alert('User denied the request for Geolocation.');
         break;
       case error.POSITION_UNAVAILABLE:
-        alert("Location information is unavailable.");
+        alert('Location information is unavailable.');
         break;
       case error.TIMEOUT:
-        alert("The request to get user location timed out.");
+        alert('The request to get user location timed out.');
         break;
       default:
-        alert("An unknown error occurred.");
+        alert('An unknown error occurred.');
         break;
     }
   };
 
   const getLocation = () => {
-    if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition(
-        (position) => {
-          fetchWeatherDataByCoords(position.coords.latitude, position.coords.longitude);
-        },
-        handleLocationError
-      );
-    } else {
-      alert("Geolocation is not supported by this browser.");
+    if (!navigator.geolocation) {
+      alert('Geolocation is not supported by this browser.');
+      return;
     }
+
+    navigator.geolocation.getCurrentPosition(
+      (position) => {
+        fetchWeatherDataByCoords(position.coords.latitude, position.coords.longitude);
+      },
+      handleLocationError
+    );
   };
 
   return (
-    <div className="mb-3">
-      <input
-        type="text"
-        className="form-control"
-        placeholder="Enter city"
-        value={location}
-        onChange={(e) => setLocation(e.target.value)}
-      />
-      <input
-        type="text"
-        className="form-control mt-2"
-        placeholder="Enter country code (e.g., CA for Canada)"
-        value={countryCode}
-        onChange={(e) => setCountryCode(e.target.value)}
-      />
-      <div className="input-group mt-2">
-        <select className="form-select" value={unit} onChange={(e) => setUnit(e.target.value)}>
+    <div className="glass-card weather-form-card mb-3">
+      <div className="weather-form-grid">
+        <input
+          type="text"
+          className="form-control weather-form-input"
+          placeholder="Enter city"
+          value={location}
+          onChange={(e) => setLocation(e.target.value)}
+        />
+
+        <input
+          type="text"
+          className="form-control weather-form-input"
+          placeholder="Enter country code (e.g. CA)"
+          value={countryCode}
+          onChange={(e) => setCountryCode(e.target.value)}
+        />
+
+        <select
+          className="form-select weather-form-input"
+          value={unit}
+          onChange={(e) => setUnit(e.target.value)}
+        >
           <option value="metric">Celsius</option>
           <option value="imperial">Fahrenheit</option>
         </select>
-        <button className="btn btn-primary" onClick={getLocation}>
-          Get Current Location Weather
+
+        <button className="btn btn-primary weather-form-btn" onClick={getLocation}>
+          Current Location
         </button>
-        <button className="btn btn-secondary" onClick={fetchForecastData}>
+
+        <button className="btn btn-secondary weather-form-btn" onClick={fetchForecastData}>
           Show Forecast
         </button>
-        <button className="btn btn-info" onClick={fetchWeatherDataByLocation}>
+
+        <button className="btn btn-info weather-form-btn" onClick={fetchWeatherDataByLocation}>
           Get Weather
         </button>
       </div>

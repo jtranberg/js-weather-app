@@ -2,7 +2,7 @@ import React, { useState, useEffect, useMemo } from 'react';
 import WeatherForm from './components/WeatherForm';
 import WeatherDisplay from './components/WeatherDisplay';
 import ForecastDisplay from './components/ForecastDisplay';
-import HistoryModal from './components/HistoryModal';
+// import HistoryModal from './components/HistoryModal';
 import CoDetails from './components/CoDetails';
 import Co2Details from './components/Co2Details';
 import Co2EraComparison from './components/Co2EraComparison';
@@ -73,10 +73,10 @@ function App() {
               addToHistory={addToHistory}
             />
 
-            <HistoryModal
+            {/* <HistoryModal
               history={searchHistory}
               setWeatherData={setWeatherData}
-            />
+            /> */}
 
             {weatherData && (
               <AtmosphereSummary weatherData={weatherData} />

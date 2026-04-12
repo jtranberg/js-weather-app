@@ -359,6 +359,65 @@ border-radius: 20px;
   align-items: center;
 }
 
+.weather-form-card {
+  max-width: 760px;
+  width: 100%;
+  margin: 0 auto 1rem;
+}
+
+.weather-form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.75rem;
+}
+
+.weather-form-input,
+.weather-form-btn {
+  min-height: 48px;
+  border-radius: 14px;
+}
+
+.weather-form-input {
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  color: #ffffff;
+}
+
+.weather-form-input::placeholder {
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.weather-form-input:focus {
+  background: rgba(255, 255, 255, 0.14);
+  color: #ffffff;
+  border-color: rgba(255, 255, 255, 0.28);
+  box-shadow: none;
+}
+
+.weather-form-card .form-select {
+  background-image: none;
+}
+
+@media (max-width: 768px) {
+  .weather-form-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.history-button-row {
+  max-width: 760px;
+  width: 100%;
+  margin: 0 auto 1rem;
+  display: flex;
+  justify-content: center;
+}
+
+.history-btn {
+  border-radius: 999px;
+  padding: 0.65rem 1.1rem;
+  font-weight: 700;
+}
+
 /* -----------------------------
    GENERIC CO2 SUPPORT
 ----------------------------- */
