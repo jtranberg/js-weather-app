@@ -1,9 +1,9 @@
 // src/components/background.js
 
-import morningImage from './images/morning.jpeg';
-import afternoonImage from './images/afternoon.jpeg';
-import eveningImage from './images/evening.jpeg';
-import nightImage from './images/night.jpeg';
+import morningImage from './images/morning.png';
+import afternoonImage from './images/afternoon.png';
+import eveningImage from './images/evening.png';
+import nightImage from './images/night.png';
 
 export function getBackgroundForTime() {
   const hour = new Date().getHours();

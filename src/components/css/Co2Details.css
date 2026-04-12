@@ -1,0 +1,108 @@
+.co2-details {
+  margin-top: 20px;
+  position: relative;
+  color: #ffffff;
+}
+
+.co2-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-bottom: 12px;
+}
+
+.co2-value {
+  font-size: 2rem;
+  font-weight: 800;
+  margin-bottom: 10px;
+}
+
+.co2-value span {
+  font-size: 1rem;
+  font-weight: 500;
+  opacity: 0.8;
+}
+
+.measure-bar {
+  position: relative;
+  width: 100%;
+  height: 12px;
+  border-radius: 999px;
+  margin: 14px 0 10px;
+  background: linear-gradient(
+    to right,
+    #4caf50 0%,
+    #8bc34a 25%,
+    #ffeb3b 50%,
+    #ff9800 75%,
+    #f44336 100%
+  );
+  overflow: visible;
+  box-shadow: inset 0 0 8px rgba(0, 0, 0, 0.18);
+}
+
+.level-indicator {
+  position: absolute;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: #ffffff;
+  border: 2px solid rgba(0, 0, 0, 0.15);
+  box-shadow:
+    0 0 12px rgba(255, 255, 255, 0.65),
+    0 0 24px rgba(255, 255, 255, 0.25);
+  transition: left 0.4s ease;
+}
+
+.co2-advisory {
+  margin-top: 10px;
+  font-size: 0.95rem;
+  line-height: 1.45;
+  color: rgba(255, 255, 255, 0.86);
+}
+
+.co2-meta {
+  display: grid;
+  gap: 4px;
+  margin-top: 12px;
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.78);
+}
+
+.co2-note {
+  margin-top: 12px;
+  font-size: 0.9rem;
+  line-height: 1.45;
+  color: rgba(255, 255, 255, 0.72);
+  padding: 10px 12px;
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.07);
+}
+
+.co2-trend {
+  font-size: 1rem;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+.trend-label {
+  font-weight: 400;
+  opacity: 0.7;
+  margin-left: 6px;
+}
+
+.trend-rising {
+  color: #ffb3b3;
+}
+
+.trend-falling {
+  color: #b8ffd0;
+}
+
+.trend-stable {
+  color: rgba(255, 255, 255, 0.8);
+}

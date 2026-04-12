@@ -1,43 +1,84 @@
 .co-details {
-    margin-top: 20px;
-  }
-  
-  .measure-bar {
-    position: relative;
-    width: 100%;
-    height: 20px;
-    background-color: #f0f0f0;
-    border-radius: 10px;
-    margin: 10px 0;
-  }
-  
-  .level-indicator {
-    height: 100%;
-    border-radius: 10px;
-  }
-  
-  .level-extremely-low .level-indicator {
-    width: 20%;
-    background-color: #4caf50;
-  }
-  
-  .level-low .level-indicator {
-    width: 40%;
-    background-color: #8bc34a;
-  }
-  
-  .level-moderate .level-indicator {
-    width: 60%;
-    background-color: #ffeb3b;
-  }
-  
-  .level-high .level-indicator {
-    width: 80%;
-    background-color: #ff9800;
-  }
-  
-  .level-extremely-high .level-indicator {
-    width: 100%;
-    background-color: #f44336;
-  }
-  
+  margin-top: 20px;
+  position: relative;
+  color: #ffffff;
+}
+
+.co-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-bottom: 12px;
+}
+
+.co-value {
+  font-size: 2rem;
+  font-weight: 800;
+  margin-bottom: 10px;
+}
+
+.co-value span {
+  font-size: 1rem;
+  font-weight: 500;
+  opacity: 0.8;
+}
+
+.measure-bar {
+  position: relative;
+  width: 100%;
+  height: 12px;
+  border-radius: 999px;
+  margin: 14px 0 10px;
+  background: linear-gradient(
+    to right,
+    #4caf50 0%,
+    #8bc34a 25%,
+    #ffeb3b 50%,
+    #ff9800 75%,
+    #f44336 100%
+  );
+  overflow: visible;
+  box-shadow: inset 0 0 8px rgba(0, 0, 0, 0.18);
+}
+
+.level-indicator {
+  position: absolute;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: #ffffff;
+  border: 2px solid rgba(0, 0, 0, 0.15);
+  box-shadow:
+    0 0 12px rgba(255, 255, 255, 0.65),
+    0 0 24px rgba(255, 255, 255, 0.25);
+  transition: left 0.4s ease;
+}
+
+/* -----------------------------
+   BADGE SYSTEM
+----------------------------- */
+
+.status-badge {
+  padding: 0.35rem 0.7rem;
+  border-radius: 999px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  border: 1px solid transparent;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+
+.co-advisory {
+  margin-top: 10px;
+  font-size: 0.95rem;
+  line-height: 1.45;
+  color: rgba(255, 255, 255, 0.86);
+}

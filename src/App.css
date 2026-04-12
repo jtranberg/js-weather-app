@@ -1,38 +1,404 @@
-body {
-  width: 100%;
-  margin: 0;
-  padding: 0;
+/* -----------------------------
+   GLOBAL RESET
+----------------------------- */
+*,
+*::before,
+*::after {
   box-sizing: border-box;
 }
 
-.container {
+html,
+body,
+#root {
+  width: 100%;
+  min-height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  color: #ffffff;
+  background: #08111d;
+}
+
+/* -----------------------------
+   APP SHELL
+----------------------------- */
+.app-shell {
+  position: relative;
+  min-height: 100vh;
+  width: 100%;
+  overflow: hidden;
+  background: #08111d;
+}
+
+.app-background {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  transform: scale(1.01);
+}
+
+.app-overlay {
+  position: relative;
+  z-index: 1;
+  min-height: 100vh;
+  width: 100%;
+  background:
+    linear-gradient(
+      180deg,
+      rgba(5, 10, 20, 0.1) 0%,
+      rgba(8, 15, 28, 0.22) 45%,
+      rgba(6, 12, 22, 0.88) 100%
+    );
+}
+
+/* -----------------------------
+   CONTENT WRAPPER
+----------------------------- */
+.weather-app-content {
+  color: #ffffff;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.app-title {
+  font-size: clamp(2.2rem, 4vw, 3.4rem);
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  text-shadow: 0 6px 24px rgba(0, 0, 0, 0.35);
+  margin-bottom: 0.35rem;
+}
+
+.app-subtitle {
+  max-width: 760px;
+  margin: 0 auto;
+  color: rgba(255, 255, 255, 0.82);
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+/* -----------------------------
+   BUTTONS
+----------------------------- */
+.btn {
+  border: none;
+}
+
+.forecast-toggle-btn {
+  border-radius: 999px;
+  padding: 0.7rem 1.25rem;
+  font-weight: 700;
+  box-shadow: 0 10px 18px rgba(0, 0, 0, 0.18);
+}
+
+/* -----------------------------
+   GLASS CARD SYSTEM
+----------------------------- */
+.glass-card {
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 18px;
+  padding: 1rem;
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(10px);
+  max-width: 760px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.panel-title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin: 0;
+}
+
+.section-label {
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-size: 0.78rem;
+  color: rgba(255, 255, 255, 0.62);
+  margin-bottom: 0.3rem;
+}
+
+/* -----------------------------
+   SHARED HEADER LAYOUT
+----------------------------- */
+.card-header-row,
+.co-header,
+.co2-header,
+.comparison-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-bottom: 12px;
+}
+
+/* -----------------------------
+   SUMMARY CARD
+----------------------------- */
+.atmosphere-summary {
+  margin-top: 1rem;
+}
+
+.summary-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.summary-location {
+  font-size: 1.7rem;
+  font-weight: 700;
+  margin-bottom: 0.2rem;
+}
+
+.summary-condition {
+  color: rgba(255, 255, 255, 0.85);
+  margin-bottom: 0;
+  text-transform: capitalize;
+}
+
+.summary-temp-block {
+  text-align: right;
+}
+
+.summary-temp {
+  font-size: 2.4rem;
+  font-weight: 800;
+  line-height: 1;
+}
+
+.summary-feels-like {
+  color: rgba(255, 255, 255, 0.8);
+  margin-top: 0.3rem;
+}
+
+.summary-metrics {
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+  margin-top: 1rem;
+}
+
+.metric-pill {
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 16px;
+  padding: 0.8rem 1rem;
+  min-width: 140px;
   display: flex;
   flex-direction: column;
-  justify-content: flex-start; /* Align content closer to the top */
+}
+
+.metric-label {
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: rgba(255, 255, 255, 0.66);
+}
+
+.metric-value {
+  font-size: 1rem;
+  font-weight: 700;
+}
+
+.summary-advisory {
+  background: rgba(255, 255, 255, 0.06);
+  border-radius: 16px;
+  padding: 1rem;
+  color: rgba(255, 255, 255, 0.92);
+}
+
+/* -----------------------------
+   STATUS BADGES (GLOBAL)
+----------------------------- */
+.summary-temp-block .status-badge {
+  margin-bottom: 0.65rem;
+}
+
+.status-badge {
+  padding: 0.35rem 0.7rem;
+  border-radius: 999px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  border: 1px solid transparent;
+  display: inline-flex;
   align-items: center;
-  min-height: 100vh;
-  width: 100vw;
-  overflow: hidden;
-  background-size: cover;
-  background-position: center;
-  font-size: 1.5em;
-  color: #126cd4;
-  padding-top: 20px; /* Optional: Add some space from the top */
+  gap: 6px;
+  line-height: 1;
+  white-space: nowrap;
 }
 
+.badge-icon {
+  font-size: 0.9em;
+  line-height: 1;
+}
 
-.weather-app-content {
+.level-good {
+  background: rgba(80, 220, 140, 0.18);
+  border-color: rgba(80, 220, 140, 0.35);
+  color: #b8ffd0;
+}
+
+.level-fair {
+  background: rgba(120, 200, 255, 0.18);
+  border-color: rgba(120, 200, 255, 0.35);
+  color: #d1f0ff;
+}
+
+.level-moderate {
+  background: rgba(255, 210, 90, 0.18);
+  border-color: rgba(255, 210, 90, 0.35);
+  color: #ffe7b0;
+}
+
+.level-poor {
+  background: rgba(255, 150, 90, 0.18);
+  border-color: rgba(255, 150, 90, 0.35);
+  color: #ffd0bd;
+}
+
+.level-hazard {
+  background: rgba(255, 80, 80, 0.18);
+  border-color: rgba(255, 80, 80, 0.35);
+  color: #ffc3c3;
+}
+
+.level-neutral {
+  background: rgba(255, 255, 255, 0.12);
+  border-color: rgba(255, 255, 255, 0.18);
+  color: #ffffff;
+}
+
+/* comparison-specific badge variants */
+.delta-good {
+  background: rgba(80, 220, 140, 0.18);
+  border-color: rgba(80, 220, 140, 0.35);
+  color: #b8ffd0;
+}
+
+.delta-fair {
+  background: rgba(120, 200, 255, 0.18);
+  border-color: rgba(120, 200, 255, 0.35);
+  color: #d1f0ff;
+}
+
+.delta-moderate {
+  background: rgba(255, 210, 90, 0.18);
+  border-color: rgba(255, 210, 90, 0.35);
+  color: #ffe7b0;
+}
+
+.delta-poor {
+  background: rgba(255, 150, 90, 0.18);
+  border-color: rgba(255, 150, 90, 0.35);
+  color: #ffd0bd;
+}
+
+/* -----------------------------
+   AIR GRID + POLLUTANTS
+----------------------------- */
+.air-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+  max-width: 760px;
+  margin: 1rem auto 0;
+}
+
+.pollutant-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.85rem;
+}
+
+.pollutant-card {
+  background: rgba(255, 255, 255, 0.07);
+  border-radius: 16px;
+  padding: 0.95rem;
+  min-width: 0;
+}
+
+.pollutant-name {
+  font-size: 0.82rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.62);
+}
+
+.pollutant-reading {
+  font-size: 1.4rem;
+  font-weight: 800;
+  margin: 0.35rem 0;
+  overflow-wrap: anywhere;
+}
+
+.pollutant-desc {
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.82);
+  line-height: 1.4;
+}
+.weather-info {
+  max-width: 760px;
+  margin: 1rem auto;
   text-align: center;
-  background: rgba(159, 198, 243, 0.709); /* Optional: Adds a subtle background */
-  padding: 20px;
-  border-radius: 10px;
+background: #81a5dc2b;
+border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
-h1 {
-  color: #fff;
+/* -----------------------------
+   GENERIC CO2 SUPPORT
+----------------------------- */
+.co2-reading {
+  font-size: 2.2rem;
+  font-weight: 800;
+  margin-bottom: 0.75rem;
 }
 
-.btn {
-  background: #3bb8f7;
-  color: #333;
+.co2-reading span {
+  font-size: 1rem;
+  font-weight: 500;
+  opacity: 0.8;
+}
+
+.co2-copy,
+.co2-future-note,
+.co2-meta {
+  color: rgba(255, 255, 255, 0.84);
+  font-size: 0.95rem;
+}
+
+.co2-meta {
+  display: grid;
+  gap: 0.25rem;
+}
+
+/* -----------------------------
+   RESPONSIVE
+----------------------------- */
+@media (max-width: 768px) {
+  .summary-temp-block {
+    text-align: left;
+  }
+
+  .pollutant-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .glass-card {
+    padding: 1rem;
+  }
 }
