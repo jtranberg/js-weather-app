@@ -12,7 +12,7 @@
 ---
 
 ## 🌐 Overview
-
+https://www.jaytranberg.com
 **Be Brave To Breathe** is a full-stack atmospheric intelligence system that transforms environmental data into actionable insights.
 
 > data → processing → insight → action
@@ -133,7 +133,7 @@ It is an environmental intelligence system.
 
 👨‍💻 Author
 Jay Tranberg
-https://www.jaytranberg.com
+
 
 Full-stack systems builder specializing in:
 
