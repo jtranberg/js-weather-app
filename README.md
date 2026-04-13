@@ -2,7 +2,7 @@
 
 
 # 🌍 Be Brave To Breathe
-https://www.jaytranberg.com
+# https://www.jaytranberg.com
 ![React](https://img.shields.io/badge/Frontend-React-blue)
 ![Node](https://img.shields.io/badge/Backend-Node.js-green)
 ![Express](https://img.shields.io/badge/API-Express-black)
