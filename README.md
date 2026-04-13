@@ -132,6 +132,8 @@ This is not just a weather app.
 It is an environmental intelligence system.
 
 👨‍💻 Author
+Jay Tranberg
+https://www.jaytranberg.com
 
 Full-stack systems builder specializing in:
 
