@@ -2,6 +2,7 @@
 
 
 # 🌍 Be Brave To Breathe
+## 🚀 Live App
 # https://www.jaytranberg.com
 ![React](https://img.shields.io/badge/Frontend-React-blue)
 ![Node](https://img.shields.io/badge/Backend-Node.js-green)
@@ -18,7 +19,7 @@
 > data → processing → insight → action
 
 ---
-## 🚀 Live App
+
 
 🌐 https://be-brave-enough-to-breath.netlify.app/
 
