@@ -18,15 +18,18 @@
 > data → processing → insight → action
 
 ---
+## 🚀 Live App
+
+🌐 https://be-brave-enough-to-breath.netlify.app/
 
 ## 📸 Screenshot
 
-⚠️ Make sure your file is here:
+
 
 /screenshot.png
 
 
-Then this will work:
+
 
 ![App Screenshot](./public/screenshot.png)
 
