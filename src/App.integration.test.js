@@ -108,6 +108,7 @@ expect(screen.getByText(/wind speed:\s*3/i)).toBeInTheDocument();
 expect(screen.getByText(/conditions:\s*clear sky/i)).toBeInTheDocument();
 
     expect(screen.getByText(/atmospheric snapshot/i)).toBeInTheDocument();
+    
 
     await waitFor(() => {
       expect(screen.getByText(/global co₂/i)).toBeInTheDocument();
