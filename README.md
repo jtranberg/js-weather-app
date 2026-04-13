@@ -25,12 +25,6 @@
 ## 📸 Screenshot
 
 
-
-/screenshot.png
-
-
-
-
 ![App Screenshot](./public/screenshot.png)
 
 ---
