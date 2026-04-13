@@ -61,7 +61,7 @@ function App() {
         <div className="container py-4">
           <div className="weather-app-content">
             <header className="text-center mb-4">
-              <h1 className="app-title">Brave Enough To Breathe</h1>
+              <h1 className="app-title">Be Brave Enough To Breathe</h1>
               <p className="app-subtitle">
                 Real-time atmospheric conditions, forecasts, and breathing intelligence.
               </p>

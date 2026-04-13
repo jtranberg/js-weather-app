@@ -68,7 +68,7 @@ export function resetCache() {
 app.get("/", (_req, res) => {
   res.json({
     status: "ok",
-    service: "be-brave-to-breath-co2-api",
+    service: "be-brave-enough-to-breath-co2-api",
   });
 });
 
